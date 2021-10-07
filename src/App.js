@@ -9,12 +9,20 @@ function App() {
   const commands = [
     {
       command: ["Click on *"],
-      callback: (isClicked) => clickButton(isClicked)
+      callback: () => clickButton()
     }
   ]
 
+  let buttoney = document.getElementById('bookButton');
+  
+  function clickButton(){
+    isClicked=false
+    console.log("i'm buttoney")
+    buttoney.click()
+  }
+
   const {transcript} = useSpeechRecognition({commands})
-  let [isClicked, clickButton] = useState(false)
+  let [isClicked] = useState(false)
 
 
   const buttons = ['bookButton']
@@ -27,10 +35,11 @@ function App() {
 
 
 if (isClicked){
-  isClicked = false
-  let buttoney = document.getElementById('bookButton')
-  console.log('🧤 buttoney', buttoney);
-  buttoney.click()
+  clickButton();
+  // isClicked = false
+  // let buttoney = document.getElementById('bookButton');
+  // console.log('🧤 buttoney', buttoney);
+  //buttoney.click()
 
 }
 
